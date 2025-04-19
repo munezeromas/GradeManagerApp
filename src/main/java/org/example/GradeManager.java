@@ -4,20 +4,19 @@ import java.util.Arrays;
 
 public class GradeManager {
     public void printGrades(int[] grades) {
-        for (int grade : grades) {
-            System.out.print(grade + " ");
+        for (int g : grades) {
+            System.out.print(g + " ");
         }
         System.out.println();
     }
 
     public int[] addGrade(int[] grades, int grade) throws InvalidGradeException {
         if (grade < 0) {
-            throw new InvalidGradeException("Error: Grade cannot be negative.");
+            throw new InvalidGradeException("Grade can't be negative.");
         }
 
         int[] newGrades = Arrays.copyOf(grades, grades.length + 1);
         newGrades[newGrades.length - 1] = grade;
-
         return newGrades;
     }
 
@@ -38,38 +37,38 @@ public class GradeManager {
         try {
             return grades[index];
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Error: Invalid index!");
+            System.out.println("Invalid index.");
             return -1;
         } finally {
-            System.out.println("Operation logged.");
+            System.out.println("Done.");
         }
     }
 
     public double calculateAverage(int[] grades) {
         int sum = 0;
-        for (int grade : grades) {
-            sum += grade;
+        for (int g : grades) {
+            sum += g;
         }
         return (double) sum / grades.length;
     }
 
     public int findHighestGrade(int[] grades) {
-        int highest = grades[0];
-        for (int grade : grades) {
-            if (grade > highest) {
-                highest = grade;
+        int max = grades[0];
+        for (int g : grades) {
+            if (g > max) {
+                max = g;
             }
         }
-        return highest;
+        return max;
     }
 
     public int findLowestGrade(int[] grades) {
-        int lowest = grades[0];
-        for (int grade : grades) {
-            if (grade < lowest) {
-                lowest = grade;
+        int min = grades[0];
+        for (int g : grades) {
+            if (g < min) {
+                min = g;
             }
         }
-        return lowest;
+        return min;
     }
 }
